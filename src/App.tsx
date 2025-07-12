@@ -9,6 +9,7 @@ import RegisterForm from './components/RegisterForm';
 import Browse from './components/Browse';
 import Dashboard from './components/Dashboard';
 import ListItemForm from './components/ListItemForm';
+import AdminPanel from './components/AdminPanel'; // ✅ newly added
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/browse" element={<Browse />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/list-item" element={<ListItemForm />} />
+          <Route path="/admin" element={<AdminPanel />} /> {/* ✅ Admin panel route */}
         </Routes>
       </Router>
     </>

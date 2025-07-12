@@ -41,6 +41,7 @@ const Navbar = () => {
         <li><a href="/browse">Browse</a></li>
         <li><a href="/dashboard">Dashboard</a></li>
         <li><a href="/list-item">List Item</a></li>
+        <li><a href="/admin">Admin</a></li>
       </Links>
     </Nav>
   );
