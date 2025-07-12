@@ -4,13 +4,15 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 require('dotenv').config();
-require('./config/passport'); 
+require('./config/passport');
 
 const authRoutes = require('./Routes/authRoutes');
+const adminRoutes = require('./Routes/adminRoutes'); // ✅ New admin routes
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -23,15 +25,18 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+// 🔐 Auth routes
 app.use('/api/auth', authRoutes);
 
-// Root health check
+// 🧑‍💼 Admin routes
+app.use('/api/admin', adminRoutes);
+
+// 🌍 Health check
 app.get('/', (req, res) => {
   res.send("🌍 ReWear API running...");
 });
 
-// MongoDB connection
+// ⚡ MongoDB connect & server start
 mongoose.connect(MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB connected");
@@ -39,7 +44,7 @@ mongoose.connect(MONGO_URI)
   })
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err.message);
-    process.exit(1); // Exit if DB connection fails
+    process.exit(1);
   });
 const express = require('express')
 const cors = require('cors') // if frontend is on another port
