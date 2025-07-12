@@ -41,3 +41,19 @@ mongoose.connect(MONGO_URI)
     console.error("❌ MongoDB connection error:", err.message);
     process.exit(1); // Exit if DB connection fails
   });
+const express = require('express')
+const cors = require('cors') // if frontend is on another port
+const app = express()
+
+app.use(cors())
+app.use(express.json())
+
+const itemRoute = require('./routes/itemroute')
+app.use('/items', itemRoute)
+
+const PORT = process.env.PORT || 5000
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
+
+
