@@ -144,10 +144,6 @@ const AdminPanel: React.FC = () => {
 
   return (
     <Container>
-        <TopBar>
-        <LogoImage src="/logo.png" alt="ReWear Logo" />
-        <TopRightIcon>A</TopRightIcon>
-      </TopBar>
 
       <Header>Admin Panel</Header>
       
